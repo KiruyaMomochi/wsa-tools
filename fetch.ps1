@@ -25,7 +25,6 @@ Write-Output ($PSStyle.Foreground.Green + "Extracted bundle to $bundleExtract`n"
 
 # Find the msix we need
 [xml] $bundleManifest = Get-Content (Join-Path $bundleExtract AppxMetadata AppxBundleManifest.xml)
-# TODO: Replace architecure with the correct one
 $package = $bundleManifest.Bundle.Packages.Package | Where-Object { $_.Type -eq 'application' -and $_.Architecture -ieq $architecture }
 Expand-Archive -Path (Join-Path $bundleExtract $package.FileName) -DestinationPath $msixExtract
 Write-Output ($PSStyle.Foreground.Green + "Extracted package to $msixExtract`n" + $PSStyle.Reset)
