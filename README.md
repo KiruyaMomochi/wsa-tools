@@ -7,12 +7,14 @@ Some tools for working with the Windows Subsystem for Android.
 ## Problems
 
 - `add-google.sh` doesn't work for Arm64 now.
+    - Consider use [ADeltaX/WSAGAScript](https://github.com/ADeltaX/WSAGAScript) and modify script.
 - Magisk sometimes doesn't work after reboot, however, kernel su is always working.
 
 ## References
 
 - [LSPosed/WSA-Kernel-SU](https://github.com/LSPosed/WSA-Kernel-SU)
 - [knackebrot/WSAGAScript](https://github.com/knackebrot/WSAGAScript)
+    - Consider use [ADeltaX/WSAGAScript](https://github.com/ADeltaX/WSAGAScript) and modify script.
 - [KiruyaMomochi/wsa-kernel-build](https://github.com/KiruyaMomochi/wsa-kernel-build)
 
 ## Q & A
@@ -53,5 +55,7 @@ Please download the correct version from <https://opengapps.org>.
 
 ### Is there any easier way to change content of a installed Packaged App
 
-You can ignore Access Control by [DavidXanatos/IgnoreACLs](https://github.com/DavidXanatos/IgnoreACLs).
+You can ignore Access Control by [NyaMisty/IgnoreACLs](https://github.com/NyaMisty/IgnoreACLs).
 But your computer may in risk, so take care of it.
+
+- The original repo [DavidXanatos/IgnoreACLs](https://github.com/DavidXanatos/IgnoreACLs) may have issues with Windows 11.
