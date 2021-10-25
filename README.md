@@ -27,6 +27,13 @@ Use
 
 For example, use `adb -s 127.0.0.1:58526 <commmand>` for WSA.
 
+### Stop WSA with command line
+
+- with `adb`:
+    adb -s 127.0.0.1:58526 reboot -p
+- with PowerShell **(Admin)**:
+    Stop-Process -Name 'WsaService', 'WsaClient' -Force
+
 ## Q & A
 
 ### How to screenshot automacally?
