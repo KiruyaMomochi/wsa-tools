@@ -1,0 +1,24 @@
+diff --git a/build.py b/build.py
+index 34d32d0..79252b9 100755
+--- a/build.py
++++ b/build.py
+@@ -13,7 +13,7 @@ import sys
+ import textwrap
+ import urllib.request
+ import zipfile
+-from distutils.dir_util import copy_tree
++import shutil
+ 
+ 
+ def error(str):
+@@ -458,8 +458,8 @@ def setup_ndk(args):
+             continue
+         src_dir = op.join('tools', 'ndk-bins', '21', arch)
+         rm(op.join(src_dir, '.DS_Store'))
+-        for path in copy_tree(src_dir, lib_dir):
+-            vprint(f'Replaced {path}')
++        path = shutil.copytree(src_dir, lib_dir, dirs_exist_ok=True)
++        vprint(f'Replaced {path}')
+ 
+ 
+ def setup_avd(args):
