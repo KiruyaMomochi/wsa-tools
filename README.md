@@ -76,3 +76,11 @@ You can ignore Access Control by [NyaMisty/IgnoreACLs](https://github.com/NyaMis
 But your computer may in risk, so take care of it.
 
 - The original repo [DavidXanatos/IgnoreACLs](https://github.com/DavidXanatos/IgnoreACLs) may have issues with Windows 11.
+
+### The kernel does not boot
+
+Kill `WsaClient.exe` and `WsaService.exe` after replacing the kernel.
+
+```powershell
+Stop-Process -Name 'WsaService', 'WsaClient' -Force
+```
