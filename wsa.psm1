@@ -142,13 +142,13 @@ class AppxMetadata {
     [int64] $Size
 }
 
-function Get-AppxPackage {
+function Get-StorePackageMetadata {
     <#
     .DESCRIPTION
-    Get-AppxPackage Fetch ms store package data from rg-adguard.
+    Get-StorePackageMetadata Fetch ms store package data from rg-adguard.
 
     .EXAMPLE
-    Get-AppxPackage -ProductId 9p3395vx91nr -Ring 'Slow' 
+    Get-StorePackageMetadata -ProductId 9p3395vx91nr -Ring 'Slow' 
     #>
     [CmdletBinding()]
     [OutputType([AppxMetadata[]])]
