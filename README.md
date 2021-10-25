@@ -1,3 +1,5 @@
+> The [wiki](https://github.com/KiruyaMomochi/wsa-tools/wiki) is open!
+
 # WSA Tools
 
 Some tools for working with the Windows Subsystem for Android.
