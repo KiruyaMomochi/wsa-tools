@@ -17,6 +17,16 @@ Some tools for working with the Windows Subsystem for Android.
     - Consider use [ADeltaX/WSAGAScript](https://github.com/ADeltaX/WSAGAScript) and modify script.
 - [KiruyaMomochi/wsa-kernel-build](https://github.com/KiruyaMomochi/wsa-kernel-build)
 
+## Tips & Tricks
+
+### Specify device for `adb`
+
+Use
+
+    adb -s <device> <command>
+
+For example, use `adb -s 127.0.0.1:58526 <commmand>` for WSA.
+
 ## Q & A
 
 ### How to screenshot automacally?
