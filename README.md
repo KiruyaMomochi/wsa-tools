@@ -7,6 +7,7 @@ Some tools for working with the Windows Subsystem for Android.
 ## Problems
 
 - `add-google.sh` doesn't work for Arm64 now.
+- Magisk sometimes doesn't work after reboot, however, kernel su is always working.
 
 ## References
 
@@ -23,10 +24,10 @@ Since `screencap` is not working, we need to find a way to do it.
 There are basically two ideas:
 
 1. Capture the window on Windows directly.
-    Refer `https://github.com/robmikh/screenshot-rs`.
+    Refer <https://github.com/robmikh/screenshot-rs>.
 
 2. Create a server on Android and send the image to us.
-    Refer `https://github.com/Genymobile/scrcpy`.
+    Refer <https://github.com/Genymobile/scrcpy>.
     However it only support screen record, we may need to modify it.
 
 ### I can't install Google, lot's of error about security context
@@ -49,3 +50,8 @@ For Arch, the solution is to install some SELinux packages:
 It's possible that you download the wrong architecture.
 
 Please download the correct version from <https://opengapps.org>.
+
+### Is there any easier way to change content of a installed Packaged App
+
+You can ignore Access Control by [DavidXanatos/IgnoreACLs](https://github.com/DavidXanatos/IgnoreACLs).
+But your computer may in risk, so take care of it.
