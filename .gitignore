@@ -1,0 +1,5 @@
+/BundleExtract
+/MsixExtractX64
+/MsixExtractARM64
+/*.msix
+/*.msixbundle
