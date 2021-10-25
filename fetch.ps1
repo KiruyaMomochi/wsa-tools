@@ -7,7 +7,7 @@ Set-StrictMode -Version Latest
 Import-Module .\wsa.psm1
 
 $wsaProductId = '9p3395vx91nr';
-$package = Get-AppxPackage -ProductId $wsaProductId -Ring 'Slow' | Where-Object { $_.Name -ilike '*.msixbundle' } | Sort-Object -Descending Size | Select-Object -First 1
+$package = Get-StorePackageMetadata -ProductId $wsaProductId -Ring 'Slow' | Where-Object { $_.Name -ilike '*.msixbundle' } | Sort-Object -Descending Size | Select-Object -First 1
 $architecture = [System.Runtime.InteropServices.RuntimeInformation]::ProcessArchitecture
 
 if (!((Test-Path $package.Name) -and (Get-FileHash -Algorithm SHA1 -Path $package.Name -ErrorAction SilentlyContinue).Hash -ieq $package.SHA1)) {
