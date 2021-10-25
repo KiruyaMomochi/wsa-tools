@@ -1,4 +1,6 @@
 Set-StrictMode -Version Latest
+$Script:ErrorActionPreference = 'Stop'
+$Script:WSA_IP = '127.0.0.1:58526'
 
 class MsSourceMetadata {
     [string] $name
@@ -81,6 +83,23 @@ function Invoke-WsaPackagePatch {
 
     Pop-Location
 }
+
+function Get-AdbDevices {
+    [OutputType([hashtable])]
+    $table = @{}
+    $devices = adb devices | Select-Object -Skip 1 | ConvertFrom-StringData -Delimiter "`t"
+    foreach ($device in $devices) {
+        $table += $device        
+    }
+    return $table
+}
+
+function Test-Wsa {
+    $devices = Get-AdbDevices
+    $device = $devices[$script:WSA_IP]
+    $device -eq 'device'
+}
+
 function Set-WsaMagisk {
     [CmdletBinding()]
     param (
@@ -89,10 +108,13 @@ function Set-WsaMagisk {
         $Magisk = "."
     )
 
-    $abi = adb shell getprop ro.product.cpu.abi
+    if (!Test-Wsa) {
+        throw "WSA is not connected"
+    }
+
+    $abi = adb -s $Script:WSA_IP shell getprop ro.product.cpu.abi
     if ( $LASTEXITCODE -ne 0 ) {
-        Write-Output $abi
-        throw "adb shell getprop failed!"
+        throw "adb shell getprop failed!`n$abi"
     }
     
     $abi = $abi.Trim()
@@ -100,13 +122,13 @@ function Set-WsaMagisk {
     $busybox = Join-Path $outdir $abi 'busybox' -Resolve
     $app = Join-Path $Magisk out 'app-debug.apk'
     $script = Join-Path $Magisk scripts emulator.sh
-    adb push $busybox $app $script '/data/local/tmp'
+    adb -s $Script:WSA_IP push $busybox $app $script '/data/local/tmp'
 
     if ( $LASTEXITCODE -ne 0 ) {
         throw "adb push failed!"
     }
 
-    adb shell sh '/data/local/tmp/emulator.sh'
+    adb -s $Script:WSA_IP shell sh '/data/local/tmp/emulator.sh'
     if ( $LASTEXITCODE -ne 0 ) {
         throw "emulator.sh failed!"
     }
