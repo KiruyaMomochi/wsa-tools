@@ -1,3 +1,4 @@
+#!/usr/bin/env pwsh
 # Download and extract the latest WSA package
 
 $Script:ErrorActionPreference = "Stop"
