@@ -84,3 +84,9 @@ Kill `WsaClient.exe` and `WsaService.exe` after replacing the kernel.
 ```powershell
 Stop-Process -Name 'WsaService', 'WsaClient' -Force
 ```
+
+### Can't grant VPN permission
+
+```powershell
+adb shell appops set <package name> ACTIVATE_VPN allow
+```
